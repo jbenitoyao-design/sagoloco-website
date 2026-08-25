@@ -376,6 +376,15 @@ document.addEventListener('DOMContentLoaded', async function() {
     if (window.Babel && typeof window.Babel.transformScriptTags === 'function') {
       window.Babel.transformScriptTags();
     }
+
+    // The page swap above (documentElement.replaceWith) happens after the
+    // browser's own one-time "scroll to #hash on load" already ran and
+    // found nothing, since the real content didn't exist yet. Do it
+    // ourselves now that it does.
+    if (location.hash) {
+      var hashTarget = document.getElementById(location.hash.slice(1));
+      if (hashTarget) hashTarget.scrollIntoView();
+    }
   } catch (err) {
     setStatus('Error unpacking: ' + err.message);
     console.error('Bundle unpack error:', err);
