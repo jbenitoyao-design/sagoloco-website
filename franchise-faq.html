@@ -336,6 +336,34 @@
   }
   .cta h2 { color: var(--on-navy); margin-bottom: 8px; }
   .cta p { color: var(--on-navy-soft); margin: 0 0 22px; font-size: 0.98rem; }
+
+  /* ---- Inquiry form ---- */
+  .form-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 28px;
+    box-shadow: var(--shadow);
+    margin-top: 20px;
+  }
+  #faqInquiryForm { display: flex; flex-direction: column; gap: 12px; }
+  .field-input {
+    width: 100%;
+    font-family: inherit;
+    font-size: 1rem;
+    color: var(--navy);
+    background: var(--bg);
+    border: 1.5px solid var(--border);
+    border-radius: 6px;
+    padding: 14px 16px;
+    box-sizing: border-box;
+  }
+  .field-input::placeholder { color: var(--navy-faint); }
+  .field-input:focus { outline: 2px solid var(--blue); outline-offset: 1px; border-color: var(--blue); }
+  textarea.field-input { resize: vertical; font-family: inherit; }
+  #faqInquiryForm .btn { align-self: flex-start; border: none; }
+  .form-thanks p { margin: 0 0 6px; font-size: 1rem; color: var(--navy); }
+  .form-thanks p:first-child { font-family: "Baloo 2", sans-serif; font-weight: 700; font-size: 1.2rem; }
 </style>
 </head>
 <body>
@@ -431,7 +459,28 @@
   <section class="cta reveal">
     <h2>Ready to see if this fits you?</h2>
     <p>Talk to us. We'll walk through the numbers together, no pressure.</p>
-    <a class="btn" href="/#franchise-form">Talk to Us →</a>
+    <a class="btn" href="#faq-inquiry-form">Talk to Us →</a>
+  </section>
+
+  <section id="faq-inquiry-form" class="reveal">
+    <div class="form-card">
+      <form id="faqInquiryForm"
+            action="https://script.google.com/macros/s/AKfycbzy6KfcRZ0zbRBrcQqeYes2mlueE752Zcu8HjS-UFkbl8Akj8bnK-ElhBHjQ6W3cIni/exec"
+            method="POST" target="faqLeadFrame">
+        <input class="field-input" type="text" name="fullName" required placeholder="Full name">
+        <input class="field-input" type="tel" name="mobile" required placeholder="Mobile number">
+        <input class="field-input" type="email" name="email" placeholder="Email address">
+        <input class="field-input" type="text" name="location" placeholder="Preferred city / area">
+        <textarea class="field-input" name="message" rows="3" placeholder="Anything else we should know?"></textarea>
+        <input type="hidden" name="source" value="Sago Loco FAQ Page">
+        <button type="submit" class="btn">Send Inquiry</button>
+      </form>
+      <iframe name="faqLeadFrame" style="display:none;" title="form submission target"></iframe>
+      <div id="faqFormThanks" class="form-thanks" hidden>
+        <p>🎉 Salamat! Message received.</p>
+        <p>Our franchise team will reach out to you shortly.</p>
+      </div>
+    </div>
   </section>
 
 </div>
@@ -476,6 +525,22 @@
         });
       }, { threshold: 0.2, rootMargin: '0px 0px -40px 0px' });
       revealEls.forEach(function (el) { io.observe(el); });
+    }
+
+    var inquiryForm = document.getElementById('faqInquiryForm');
+    var leadFrame = document.querySelector('iframe[name="faqLeadFrame"]');
+    var thanks = document.getElementById('faqFormThanks');
+    if (inquiryForm && leadFrame && thanks) {
+      var submitted = false;
+      inquiryForm.addEventListener('submit', function () {
+        submitted = true;
+      });
+      leadFrame.addEventListener('load', function () {
+        if (!submitted) return;
+        inquiryForm.hidden = true;
+        thanks.hidden = false;
+        thanks.scrollIntoView({ block: 'center', behavior: reduceMotion ? 'auto' : 'smooth' });
+      });
     }
   })();
 </script>
