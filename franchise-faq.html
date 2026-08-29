@@ -325,6 +325,70 @@
   details.faq p { margin: 0 0 16px; color: var(--navy-soft); font-size: 0.95rem; max-width: 62ch; }
   details.faq summary:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; border-radius: 4px; }
 
+  /* ---- Season timing band ---- */
+  .season {
+    background: var(--surface-alt);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 28px 26px;
+  }
+  .season h2 { margin-bottom: 10px; max-width: 20ch; }
+  .season .season-lede {
+    color: var(--navy-soft);
+    font-size: 0.98rem;
+    max-width: 56ch;
+    margin: 0 0 22px;
+  }
+  .season-strip {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 22px;
+  }
+  .season-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--navy-faint);
+    border-radius: 10px;
+    padding: 14px 16px;
+  }
+  .season-block.peak { border-left-color: var(--orange); }
+  .season-months {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--navy-faint);
+    margin-bottom: 4px;
+  }
+  .season-block.peak .season-months { color: var(--orange-deep); }
+  .season-name {
+    font-family: "Baloo 2", sans-serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--navy);
+    line-height: 1.25;
+    margin-bottom: 4px;
+  }
+  .season-note { font-size: 0.88rem; color: var(--navy-soft); }
+  .season-math {
+    color: var(--navy-soft);
+    font-size: 0.98rem;
+    max-width: 58ch;
+    margin: 0 0 18px;
+  }
+  .season-math strong { color: var(--navy); }
+  .season-punch {
+    font-family: "Baloo 2", sans-serif;
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: var(--navy);
+    margin: 0;
+  }
+  @media (max-width: 620px) {
+    .season-strip { grid-template-columns: 1fr; }
+  }
+
   /* ---- CTA (navy bookend) ---- */
   .cta {
     background: var(--navy);
@@ -335,6 +399,18 @@
   }
   .cta h2 { color: var(--on-navy); margin-bottom: 8px; }
   .cta p { color: var(--on-navy-soft); margin: 0 0 22px; font-size: 0.98rem; }
+  .cta p.cta-reversal {
+    color: var(--on-navy);
+    font-weight: 700;
+    font-size: 1.02rem;
+    max-width: 46ch;
+    margin: 0 auto 24px;
+  }
+  .cta p.cta-fineprint {
+    margin: 16px 0 0;
+    font-size: 0.85rem;
+    opacity: 0.75;
+  }
 
   /* ---- Inquiry form ---- */
   .form-card {
@@ -429,6 +505,30 @@
     </div>
   </section>
 
+  <section class="season reveal">
+    <h2>Nobody buys a cold drink because you're ready to sell it.</h2>
+    <p class="season-lede">They buy it because it's hot, or because it's December and the whole family is out. The Philippines hands you both, back to back.</p>
+    <div class="season-strip">
+      <div class="season-block peak">
+        <div class="season-months">Sept &ndash; Dec</div>
+        <div class="season-name">Ber months</div>
+        <div class="season-note">Christmas crowds, all four months of them.</div>
+      </div>
+      <div class="season-block">
+        <div class="season-months">Jan &ndash; Feb</div>
+        <div class="season-name">The quiet stretch</div>
+        <div class="season-note">Steady, not spectacular.</div>
+      </div>
+      <div class="season-block peak">
+        <div class="season-months">Mar &ndash; May</div>
+        <div class="season-name">Summer</div>
+        <div class="season-note">Peak season for anything cold.</div>
+      </div>
+    </div>
+    <p class="season-math">That's most of a year where people are already outside, already walking past, already thirsty. The only question is whether there's a counter there when they walk by. From signing to opening day takes about <strong>45 to 60 days</strong>. So pick the season you want to open into, count backwards, and add that. That's your decision date, and it's earlier than it feels.</p>
+    <p class="season-punch">We're not the ones setting the deadline. The calendar is.</p>
+  </section>
+
   <section id="faq">
     <h2>Common questions</h2>
     <div class="faq-list">
@@ -449,16 +549,22 @@
         <p>Both packages include training on how to run a Sago Loco store: making the drinks, setting up your station, and day-to-day operations, before you open.</p>
       </details>
       <details class="faq reveal" style="transition-delay:0.24s">
+        <summary>How soon can I open?</summary>
+        <p>About 45 to 60 days from signing to opening day. That covers your build-out, equipment, training, and stocking. If you're aiming to catch a specific season, work backwards from your target opening date and give yourself that runway.</p>
+      </details>
+      <details class="faq reveal" style="transition-delay:0.30s">
         <summary>What happens after I send an inquiry?</summary>
-        <p>We'll contact you to set up a call. We'll walk through the packages and answer your questions. There's no pressure to commit.</p>
+        <p>We'll contact you within 24 hours to schedule your free product tasting. You'll try the drinks, we'll walk through the packages and the numbers, and you decide after. There's no pressure to commit.</p>
       </details>
     </div>
   </section>
 
   <section class="cta reveal">
-    <h2>Ready to see if this fits you?</h2>
-    <p>Talk to us. We'll walk through the numbers together, no pressure.</p>
-    <a class="btn" href="#faq-inquiry-form">Talk to Us →</a>
+    <h2>You wouldn't buy a shake business without tasting the shake.</h2>
+    <p>So don't. Come to a free product tasting. You try the drinks yourself, we walk through the real numbers, and you go home and decide. About 45 minutes. No deposit, no contract, no one chasing you after.</p>
+    <p class="cta-reversal">If the drink doesn't sell itself in your mouth, don't buy the franchise.</p>
+    <a class="btn" href="#faq-inquiry-form">Book My Free Tasting →</a>
+    <p class="cta-fineprint">Free for serious inquiries. We'll confirm your schedule within 24 hours, while there's still a season ahead of you.</p>
   </section>
 
   <section id="faq-inquiry-form" class="reveal">
@@ -472,12 +578,12 @@
         <input class="field-input" type="text" name="location" placeholder="Preferred city / area">
         <textarea class="field-input" name="message" rows="3" placeholder="Anything else we should know?"></textarea>
         <input type="hidden" name="source" value="Sago Loco FAQ Page">
-        <button type="submit" class="btn">Send Inquiry</button>
+        <button type="submit" class="btn">Book My Free Tasting</button>
       </form>
       <iframe name="faqLeadFrame" style="display:none;" title="form submission target"></iframe>
       <div id="faqFormThanks" class="form-thanks" hidden>
         <p>🎉 Salamat! Message received.</p>
-        <p>Our franchise team will reach out to you shortly.</p>
+        <p>Our franchise team will reach out within 24 hours to schedule your free product tasting.</p>
       </div>
     </div>
   </section>
