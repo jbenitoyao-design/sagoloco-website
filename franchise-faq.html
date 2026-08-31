@@ -326,6 +326,40 @@
   details.faq p { margin: 0 0 16px; color: var(--navy-soft); font-size: 0.95rem; max-width: 62ch; }
   details.faq summary:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; border-radius: 4px; }
 
+  /* ---- What it covers ---- */
+  .covers {
+    margin-top: 30px;
+    background: var(--surface-alt);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px 26px;
+  }
+  .covers-head { font-size: 1.25rem; margin-bottom: 14px; }
+  .covers-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 16px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px 22px;
+  }
+  .covers-list li {
+    position: relative;
+    padding-left: 22px;
+    font-size: 0.94rem;
+    color: var(--navy-soft);
+  }
+  .covers-list li::before {
+    content: "\2713";
+    position: absolute;
+    left: 0;
+    color: var(--blue);
+    font-weight: 700;
+  }
+  .covers-note { margin: 0; font-size: 0.94rem; color: var(--navy-soft); max-width: 62ch; }
+  .covers-note strong { color: var(--navy); }
+  @media (max-width: 620px) { .covers-list { grid-template-columns: 1fr; } }
+
   /* ---- Franchisee strip ---- */
   .owners { margin-top: 34px; }
   .owners-head { font-size: 1.3rem; max-width: 26ch; margin-bottom: 6px; }
@@ -530,6 +564,20 @@
         </ul>
       </div>
     </div>
+    <div class="covers reveal">
+      <h2 class="covers-head">What ₱400,000 actually covers.</h2>
+      <ul class="covers-list">
+        <li>Renovation, up to 8 square meters</li>
+        <li>Fixtures and signage</li>
+        <li>Equipment and starter kit</li>
+        <li>₱10,000 opening stock</li>
+        <li>Full training</li>
+        <li>Grand opening support</li>
+        <li>Site visit, moving and notary fees</li>
+      </ul>
+      <p class="covers-note">Comparable milkshake franchises here run <strong>₱350,000 to ₱900,000 before renovation</strong>. Ask what yours covers before you compare it to this one.</p>
+    </div>
+
     <div class="owners reveal">
       <h2 class="owners-head">Moving early paid them twice.</h2>
       <p class="owners-sub">A better price, and first pick of their city. Quezon City, San Pablo, Pampanga, and Malolos are gone. Yours probably isn't. Yet.</p>
@@ -598,7 +646,7 @@
     <div class="faq-list">
       <details class="faq reveal" style="transition-delay:0.00s">
         <summary>How does the payment work?</summary>
-        <p><strong>Basic Package:</strong> ₱140,000 to start, then the remaining ₱140,000 balance and a refundable ₱20,000 Commissary Bond within 45 days of signing.<br><strong>Grab &amp; Go Drink Bar:</strong> ₱200,000 to start, then the remaining ₱200,000 balance and the same refundable ₱20,000 bond within 45 days. You'll also sign 12 monthly checks of ₱5,000 each, starting 3 months after you sign. We'll walk through the full schedule on our call.</p>
+        <p><strong>Basic Package:</strong> ₱140,000 to start, then the remaining ₱140,000 balance and a refundable ₱20,000 Commissary Bond within 45 days of signing.<br><strong>Grab &amp; Go Drink Bar:</strong> ₱200,000 to start, then the remaining ₱200,000 balance and the same refundable ₱20,000 bond within 45 days.<br>We'll walk you through the complete fee schedule at your tasting, before anything is signed.</p>
       </details>
       <details class="faq reveal" style="transition-delay:0.06s">
         <summary>Which package should I choose?</summary>
