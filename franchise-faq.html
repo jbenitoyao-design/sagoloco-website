@@ -111,6 +111,7 @@
     max-width: 46ch;
     margin: 0 auto 24px;
   }
+  .hero-inner .btn { margin-bottom: 6px; }
   .quick-nav {
     display: inline-flex;
     gap: 10px;
@@ -325,6 +326,37 @@
   details.faq p { margin: 0 0 16px; color: var(--navy-soft); font-size: 0.95rem; max-width: 62ch; }
   details.faq summary:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; border-radius: 4px; }
 
+  /* ---- Franchisee strip ---- */
+  .owners { margin-top: 34px; }
+  .owners-head { font-size: 1.3rem; max-width: 26ch; margin-bottom: 6px; }
+  .owners-sub { color: var(--navy-soft); font-size: 0.96rem; max-width: 58ch; margin: 0 0 20px; }
+  .owners-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .owner { margin: 0; }
+  .owner img {
+    width: 100%;
+    aspect-ratio: 2 / 1;
+    object-fit: cover;
+    display: block;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+  }
+  .owner figcaption { margin-top: 8px; font-size: 0.84rem; line-height: 1.35; }
+  .owner figcaption strong { display: block; font-family: "Baloo 2", sans-serif; color: var(--navy); font-size: 0.95rem; }
+  .owner figcaption span { color: var(--navy-faint); }
+  .owners-bridge { margin: 18px 0 0; color: var(--navy-soft); font-size: 0.95rem; max-width: 58ch; }
+  @media (max-width: 860px) { .owners-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 440px) { .owners-grid { grid-template-columns: 1fr; } }
+
+  /* ---- Inline CTA repeats ---- */
+  .cta-inline { text-align: center; margin-top: 26px; }
+
+  /* ---- Proof ---- */
+  .proof { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: center; }
+  .proof-photo { width: 100%; height: auto; border-radius: 14px; border: 1px solid var(--border); box-shadow: var(--shadow); }
+  .proof-copy h2 { max-width: 16ch; }
+  .proof-copy p { color: var(--navy-soft); font-size: 0.98rem; margin: 0; }
+  @media (max-width: 620px) { .proof { grid-template-columns: 1fr; } }
+
   /* ---- Season timing band ---- */
   .season {
     background: var(--surface-alt);
@@ -378,6 +410,7 @@
     margin: 0 0 18px;
   }
   .season-math strong { color: var(--navy); }
+  .season-terr { color: var(--navy-soft); font-size: 0.95rem; max-width: 52ch; margin: 12px 0 0; }
   .season-punch {
     font-family: "Baloo 2", sans-serif;
     font-weight: 700;
@@ -452,12 +485,9 @@
   <span class="deco deco-6 orange"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1l2.9 6.9L22 9l-5.5 4.8L18 21l-6-3.6L6 21l1.5-7.2L2 9l7.1-1.1L12 1z"/></svg></span>
   <div class="hero-inner">
     <span class="eyebrow">Franchise with Sago Loco</span>
-    <h1>How much does a <span class="hl-orange">Sago Loco</span> franchise <span class="hl-blue">cost</span>?</h1>
-    <p class="hero-sub">Two ways to start. Real prices, no guessing games.</p>
-    <nav class="quick-nav">
-      <a href="#pricing">See the Packages</a>
-      <a href="#faq">Payment &amp; FAQ</a>
-    </nav>
+    <h1>A <span class="hl-orange">Sago Loco</span> franchise costs <span class="hl-blue">₱280,000</span> or <span class="hl-blue">₱400,000</span>.</h1>
+    <p class="hero-sub">That's the whole price. Which one you pay depends on whether you already have a space.</p>
+    <a class="btn" href="#faq-inquiry-form">Book My Free Tasting &rarr;</a>
     <img class="mascot" src="/assets/franchise-hero-kiosk.jpg" width="380" height="285" alt="Sago Loco kiosk storefront render">
   </div>
 </header>
@@ -472,8 +502,7 @@
         <img class="tier-photo" src="/assets/franchise-basic-signage.jpg" width="900" height="480" loading="lazy" alt="Sago Loco Pearl Shakes main storefront signage">
         <div class="tier-tag">Package 1</div>
         <div class="tier-name">Basic Package</div>
-        <div class="tier-price">₱<span class="count" data-target="280000">0</span><sup style="font-size:0.9rem;">*</sup></div>
-        <div class="tier-note">*Price may differ outside Metro Manila &nbsp;·&nbsp; Starts at ₱140,000 to reserve your spot</div>
+        <div class="tier-price">₱280,000</div>
         <div class="tier-for">Best if you already run a business and just want to add Sago Loco to it.</div>
         <ul>
           <li>Sago Loco name &amp; proven system</li>
@@ -488,8 +517,7 @@
         <img class="tier-photo" src="/assets/franchise-grab-go-kiosk.jpg" width="900" height="494" loading="lazy" alt="Grab and Go Drink Bar kiosk counter, blue and white with backlit orange tile">
         <div class="tier-tag">Package 2</div>
         <div class="tier-name">Grab &amp; Go Drink Bar</div>
-        <div class="tier-price">₱<span class="count" data-target="400000">0</span><sup style="font-size:0.9rem;">*</sup></div>
-        <div class="tier-note">*Price may differ outside Metro Manila &nbsp;·&nbsp; Starts at ₱200,000 to reserve your spot</div>
+        <div class="tier-price">₱400,000</div>
         <div class="tier-for">Best if you're starting from an empty space. This builds the whole store for you.</div>
         <ul>
           <li>Everything in the Basic Package</li>
@@ -500,14 +528,45 @@
         </ul>
       </div>
     </div>
-    <div class="why-box reveal">
-      <strong>Why two prices?</strong> The Basic Package fits inside a business you already run. The Grab &amp; Go Drink Bar builds a store from nothing. That's what the extra ₱120,000 pays for: renovation, fixtures, and your opening day.
+    <div class="owners reveal">
+      <h2 class="owners-head">Moving early paid them twice.</h2>
+      <p class="owners-sub">A better price, and first pick of their city. Quezon City, San Pablo, Pampanga, and Malolos are gone. Yours probably isn't. Yet.</p>
+      <div class="owners-grid">
+        <figure class="owner">
+          <img src="/assets/franchisee-maccoy.jpg" width="800" height="354" loading="lazy" alt="Maccoy and the Sago Loco team at signing">
+          <figcaption><strong>Maccoy</strong><span>Quezon City</span></figcaption>
+        </figure>
+        <figure class="owner">
+          <img src="/assets/franchisee-celso.jpg" width="800" height="354" loading="lazy" alt="Celso and the Sago Loco team at signing">
+          <figcaption><strong>Celso</strong><span>San Pablo, Laguna</span></figcaption>
+        </figure>
+        <figure class="owner">
+          <img src="/assets/franchisee-luigi.jpg" width="800" height="370" loading="lazy" alt="Luigi and the Sago Loco team at signing">
+          <figcaption><strong>Luigi</strong><span>San Fernando, Pampanga</span></figcaption>
+        </figure>
+        <figure class="owner">
+          <img src="/assets/franchisee-jho.jpg" width="800" height="370" loading="lazy" alt="Jho and the Sago Loco team at signing">
+          <figcaption><strong>Jho</strong><span>Malolos, Bulacan</span></figcaption>
+        </figure>
+      </div>
+      <p class="owners-bridge">All four tasted the product before they signed. Ube Dream and Mango Regal did most of the work.</p>
+    </div>
+    <div class="cta-inline reveal">
+      <a class="btn" href="#faq-inquiry-form">Taste It Before You Decide &rarr;</a>
+    </div>
+  </section>
+
+  <section class="proof reveal">
+    <img class="proof-photo" src="/assets/franchise-bgc-counter.jpg" width="999" height="920" loading="lazy" alt="Customers ordering at a Sago Loco counter">
+    <div class="proof-copy">
+      <h2>The product isn't the risk.</h2>
+      <p>That's one of our stores, mid-order. Nobody wonders whether Filipinos buy pearl shakes. They wonder whether there's a counter near them when they want one.</p>
     </div>
   </section>
 
   <section class="season reveal">
     <h2>Nobody buys a cold drink because you're ready to sell it.</h2>
-    <p class="season-lede">They buy it because it's hot, or because it's December and the whole family is out. The Philippines hands you both, back to back.</p>
+    <p class="season-lede">They buy it because it's hot, or because it's December and everyone's out. You get both, back to back.</p>
     <div class="season-strip">
       <div class="season-block peak">
         <div class="season-months">Sept &ndash; Dec</div>
@@ -525,8 +584,11 @@
         <div class="season-note">Peak season for anything cold.</div>
       </div>
     </div>
-    <p class="season-math">That's most of a year where people are already outside, already walking past, already thirsty. The only question is whether there's a counter there when they walk by. From signing to opening day takes about <strong>45 to 60 days</strong>. So pick the season you want to open into, count backwards, and add that. That's your decision date, and it's earlier than it feels.</p>
     <p class="season-punch">We're not the ones setting the deadline. The calendar is.</p>
+    <p class="season-terr">Six franchises are taken. Your city is almost certainly still open. That stops being true one city at a time.</p>
+    <div class="cta-inline">
+      <a class="btn" href="#faq-inquiry-form">Book My Free Tasting &rarr;</a>
+    </div>
   </section>
 
   <section id="faq">
@@ -550,7 +612,7 @@
       </details>
       <details class="faq reveal" style="transition-delay:0.24s">
         <summary>How soon can I open?</summary>
-        <p>About 45 to 60 days from signing to opening day. That covers your build-out, equipment, training, and stocking. If you're aiming to catch a specific season, work backwards from your target opening date and give yourself that runway.</p>
+        <p>About 45 to 60 days <strong>once your location is approved</strong>. That covers build-out, equipment, training, and stocking. Finding and securing your space happens before that clock starts, so start looking early.</p>
       </details>
       <details class="faq reveal" style="transition-delay:0.30s">
         <summary>What happens after I send an inquiry?</summary>
