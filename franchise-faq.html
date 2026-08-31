@@ -364,24 +364,51 @@
   .owners { margin-top: 34px; }
   .owners-head { font-size: 1.3rem; max-width: 26ch; margin-bottom: 6px; }
   .owners-sub { color: var(--navy-soft); font-size: 0.96rem; max-width: 58ch; margin: 0 0 20px; }
-  .owners-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
-  .owner { margin: 0; }
-  .owner img {
+  .carousel { position: relative; max-width: 380px; margin: 0 auto; }
+  .car-window { overflow: hidden; border-radius: 12px; }
+  .car-track { display: flex; transition: transform 0.45s ease; }
+  .car-slide { flex: 0 0 100%; margin: 0; min-width: 0; }
+  .car-slide img {
     width: 100%;
     aspect-ratio: 3 / 4;
-    height: auto;
     object-fit: cover;
-    object-position: 50% 20%;
     display: block;
-    border-radius: 10px;
+    border-radius: 12px;
     border: 1px solid var(--border);
   }
-  .owner figcaption { margin-top: 8px; font-size: 0.84rem; line-height: 1.35; }
-  .owner figcaption strong { display: block; font-family: "Baloo 2", sans-serif; color: var(--navy); font-size: 0.95rem; }
-  .owner figcaption span { color: var(--navy-faint); }
-  .owners-bridge { margin: 18px 0 0; color: var(--navy-soft); font-size: 0.95rem; max-width: 58ch; }
-  @media (max-width: 860px) { .owners-grid { grid-template-columns: repeat(2, 1fr); } }
-  @media (max-width: 440px) { .owners-grid { grid-template-columns: 1fr; } }
+  .car-slide figcaption { text-align: center; margin-top: 10px; line-height: 1.35; }
+  .car-slide figcaption strong { display: block; font-family: "Baloo 2", sans-serif; color: var(--navy); font-size: 1.05rem; }
+  .car-slide figcaption span { color: var(--navy-faint); font-size: 0.9rem; }
+  .car-nav {
+    position: absolute;
+    top: 38%;
+    transform: translateY(-50%);
+    width: 38px; height: 38px;
+    border: none;
+    border-radius: 999px;
+    background: rgba(22,27,51,0.55);
+    color: #fff;
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+  }
+  .car-nav:hover { background: var(--navy); }
+  .car-prev { left: 8px; }
+  .car-next { right: 8px; }
+  .car-dots { display: flex; justify-content: center; gap: 7px; margin-top: 12px; }
+  .car-dot {
+    width: 8px; height: 8px;
+    border-radius: 999px;
+    border: none;
+    padding: 0;
+    background: var(--navy-faint);
+    opacity: 0.4;
+    cursor: pointer;
+  }
+  .car-dot[aria-selected="true"] { opacity: 1; background: var(--red); width: 20px; }
+  @media (prefers-reduced-motion: reduce) { .car-track { transition: none; } }
 
   /* ---- Inline CTA repeats ---- */
   .cta-inline { text-align: center; margin-top: 26px; }
@@ -581,23 +608,30 @@
     <div class="owners reveal">
       <h2 class="owners-head">Moving early paid them twice.</h2>
       <p class="owners-sub">A better price, and first pick of their city. Quezon City, San Pablo, Pampanga, and Malolos are gone. Yours probably isn't. Yet.</p>
-      <div class="owners-grid">
-        <figure class="owner">
-          <img src="/assets/franchisee-maccoy.jpg" width="600" height="800" loading="lazy" alt="Maccoy and the Sago Loco team at signing">
+      <div class="carousel" id="ownerCarousel">
+        <div class="car-window">
+          <div class="car-track">
+        <figure class="car-slide" role="group" aria-roledescription="slide" aria-label="1 of 4">
+          <img src="/assets/franchisee-maccoy.jpg?v=2" width="600" height="800"  alt="Maccoy, Sago Loco franchisee in Quezon City">
           <figcaption><strong>Maccoy</strong><span>Quezon City</span></figcaption>
         </figure>
-        <figure class="owner">
-          <img src="/assets/franchisee-celso.jpg" width="600" height="800" loading="lazy" alt="Celso and the Sago Loco team at signing">
+        <figure class="car-slide" role="group" aria-roledescription="slide" aria-label="2 of 4">
+          <img src="/assets/franchisee-celso.jpg?v=2" width="600" height="800" loading="lazy" alt="Celso, Sago Loco franchisee in San Pablo, Laguna">
           <figcaption><strong>Celso</strong><span>San Pablo, Laguna</span></figcaption>
         </figure>
-        <figure class="owner">
-          <img src="/assets/franchisee-luigi.jpg" width="600" height="800" loading="lazy" alt="Luigi and the Sago Loco team at signing">
+        <figure class="car-slide" role="group" aria-roledescription="slide" aria-label="3 of 4">
+          <img src="/assets/franchisee-luigi.jpg?v=2" width="600" height="800" loading="lazy" alt="Luigi, Sago Loco franchisee in San Fernando, Pampanga">
           <figcaption><strong>Luigi</strong><span>San Fernando, Pampanga</span></figcaption>
         </figure>
-        <figure class="owner">
-          <img src="/assets/franchisee-jho.jpg" width="600" height="800" loading="lazy" alt="Jho and the Sago Loco team at signing">
+        <figure class="car-slide" role="group" aria-roledescription="slide" aria-label="4 of 4">
+          <img src="/assets/franchisee-jho.jpg?v=2" width="600" height="800" loading="lazy" alt="Jho, Sago Loco franchisee in Malolos, Bulacan">
           <figcaption><strong>Jho</strong><span>Malolos, Bulacan</span></figcaption>
         </figure>
+          </div>
+        </div>
+        <button class="car-nav car-prev" type="button" aria-label="Previous franchisee">&#8249;</button>
+        <button class="car-nav car-next" type="button" aria-label="Next franchisee">&#8250;</button>
+        <div class="car-dots" role="tablist" aria-label="Choose franchisee"></div>
       </div>
       <p class="owners-bridge">All four tasted the product before they signed. Ube Dream and Mango Regal did most of the work.</p>
     </div>
@@ -759,6 +793,48 @@
         thanks.scrollIntoView({ block: 'center', behavior: reduceMotion ? 'auto' : 'smooth' });
       });
     }
+  })();
+</script>
+<script>
+  (function () {
+    var root = document.getElementById('ownerCarousel');
+    if (!root) return;
+    var track = root.querySelector('.car-track');
+    var slides = root.querySelectorAll('.car-slide');
+    var dotWrap = root.querySelector('.car-dots');
+    var i = 0, timer = null;
+    var slow = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    for (var d = 0; d < slides.length; d++) {
+      var b = document.createElement('button');
+      b.className = 'car-dot';
+      b.type = 'button';
+      b.setAttribute('role', 'tab');
+      b.setAttribute('aria-label', 'Franchisee ' + (d + 1));
+      (function (n) { b.addEventListener('click', function () { go(n); rest(); }); })(d);
+      dotWrap.appendChild(b);
+    }
+    var dots = dotWrap.querySelectorAll('.car-dot');
+
+    function go(n) {
+      i = (n + slides.length) % slides.length;
+      track.style.transform = 'translateX(' + (-i * 100) + '%)';
+      for (var k = 0; k < dots.length; k++) {
+        dots[k].setAttribute('aria-selected', k === i ? 'true' : 'false');
+      }
+    }
+    function next() { go(i + 1); }
+    function play() { if (!slow) timer = setInterval(next, 4000); }
+    function stop() { if (timer) { clearInterval(timer); timer = null; } }
+    function rest() { stop(); play(); }
+
+    root.querySelector('.car-next').addEventListener('click', function () { next(); rest(); });
+    root.querySelector('.car-prev').addEventListener('click', function () { go(i - 1); rest(); });
+    root.addEventListener('mouseenter', stop);
+    root.addEventListener('mouseleave', play);
+
+    go(0);
+    play();
   })();
 </script>
 </body>
