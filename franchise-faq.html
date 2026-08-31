@@ -96,20 +96,30 @@
     margin-bottom: 12px;
   }
   h1 {
-    font-size: clamp(1.9rem, 5vw, 2.7rem);
+    font-size: clamp(1.45rem, 4.6vw, 2.7rem);
     font-weight: 800;
-    line-height: 1.15;
-    max-width: 16ch;
+    line-height: 1.5;
+    max-width: 22ch;
     margin: 0 auto 16px;
   }
   h1 .hl-orange { color: var(--orange); }
   h1 .hl-blue { color: #6FC6FF; }
+  h1 .hl-yellow {
+    background: #FFD84D;
+    color: var(--navy);
+    padding: 0.04em 0.14em;
+    border-radius: 4px;
+    line-height: 1.1;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+  }
   .hero-sub {
-    font-size: 1.08rem;
-    font-weight: 500;
+    font-size: 0.9rem;
+    font-weight: 400;
     color: var(--on-navy-soft);
+    opacity: 0.8;
     max-width: 46ch;
-    margin: 0 auto 24px;
+    margin: 0 auto 22px;
   }
   .hero-inner .btn { margin-bottom: 6px; }
   .quick-nav {
@@ -382,7 +392,7 @@
   /* ---- Proof ---- */
   .proof { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: center; }
   .proof-photo { width: 100%; height: auto; border-radius: 14px; border: 1px solid var(--border); box-shadow: var(--shadow); }
-  .proof-copy h2 { max-width: 16ch; }
+  .proof-copy h2 { max-width: 20ch; }
   .proof-copy p { color: var(--navy-soft); font-size: 0.98rem; margin: 0; }
   @media (max-width: 620px) { .proof { grid-template-columns: 1fr; } }
 
@@ -514,8 +524,8 @@
   <span class="deco deco-6 orange"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1l2.9 6.9L22 9l-5.5 4.8L18 21l-6-3.6L6 21l1.5-7.2L2 9l7.1-1.1L12 1z"/></svg></span>
   <div class="hero-inner">
     <span class="eyebrow">Franchise with Sago Loco</span>
-    <h1>A <span class="hl-orange">Sago Loco</span> franchise costs <span class="hl-blue">₱280,000</span> or <span class="hl-blue">₱400,000</span>.</h1>
-    <p class="hero-sub">That's the whole price. Which one you pay depends on whether you already have a space.</p>
+    <h1><span class="hl-yellow">Additional monthly income.</span><br>Starts at <span class="hl-blue">₱280,000</span>.</h1>
+    <p class="hero-sub">It's like buying a car that makes you money.</p>
     <a class="btn" href="#faq-inquiry-form">Book My Free Tasting &rarr;</a>
     <img class="mascot" src="/assets/franchise-hero-kiosk.jpg" width="380" height="285" alt="Sago Loco kiosk storefront render">
   </div>
@@ -594,7 +604,7 @@
   <section class="proof reveal">
     <img class="proof-photo" src="/assets/franchise-bgc-counter.jpg" width="999" height="920" loading="lazy" alt="Customers ordering at a Sago Loco counter">
     <div class="proof-copy">
-      <h2>The product isn't the risk.</h2>
+      <h2>Be the first in your area to sell Sago Loco drinks</h2>
       <p>That's one of our stores, mid-order. Nobody wonders whether Filipinos buy pearl shakes. They wonder whether there's a counter near them when they want one.</p>
     </div>
   </section>
