@@ -1,0 +1,11 @@
+{
+  "name": "Sago Loco Pearl Shakes",
+  "short_name": "Sago Loco",
+  "icons": [
+    { "src": "/assets/web-app-manifest-192x192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/assets/web-app-manifest-512x512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }
+  ],
+  "theme_color": "#F5901E",
+  "background_color": "#ffffff",
+  "display": "standalone"
+}
