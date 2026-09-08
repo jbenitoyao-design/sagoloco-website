@@ -83,9 +83,10 @@
   .hero {
     background: var(--navy);
     color: var(--on-navy);
-    padding: 56px 20px 80px;
+    padding: 40px 20px 46px;
     text-align: center;
   }
+  .hero h1 { line-height: 1.15; margin-bottom: 6px; }
   .eyebrow {
     display: inline-block;
     font-size: 0.78rem;
@@ -182,6 +183,128 @@
     .mascot, .deco { animation: none !important; }
     .reveal, .reveal.is-visible { opacity: 1; transform: none; transition: none; animation: none !important; }
   }
+
+  /* ---- Hero: AFFI expo invitation (text + images sandwiched) ---- */
+  .hero-poster {
+    width: 100%;
+    max-width: 248px;
+    height: auto;
+    display: block;
+    margin: 16px auto 14px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.16);
+    box-shadow: 0 10px 26px rgba(0,0,0,0.32);
+  }
+  @media (max-width: 480px) { .hero-poster { max-width: 200px; } }
+  .zoomable { cursor: zoom-in; }
+  .hero-poster.zoomable { transition: transform 0.2s ease, box-shadow 0.2s ease; }
+  .hero-poster.zoomable:hover,
+  .hero-poster.zoomable:focus-visible {
+    transform: scale(1.05);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.45);
+    outline: none;
+  }
+  .zoom-hint {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--on-navy-soft);
+    opacity: 0.6;
+    margin: 0 auto 16px;
+  }
+  .zoom-hint::before { content: "\1F50D\FE0E  "; }
+  .hero-strip-cap {
+    font-size: 0.76rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--on-navy-soft);
+    opacity: 0.65;
+    margin: 0 auto 6px;
+  }
+
+  /* Tap-to-enlarge overlay for the poster / logo strip */
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    background: rgba(11,13,31,0.94);
+    cursor: zoom-out;
+  }
+  .lightbox[hidden] { display: none; }
+  .lightbox-stage {
+    min-height: 100%;
+    min-width: 100%;
+    width: max-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 44px 16px;
+  }
+  .lightbox img {
+    max-width: none;
+    max-height: 88vh;
+    width: auto;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 24px 70px rgba(0,0,0,0.55);
+    background: #fff;
+  }
+  .lightbox-close {
+    position: fixed;
+    top: 8px;
+    right: 14px;
+    font-size: 2.2rem;
+    line-height: 1;
+    color: #fff;
+    background: rgba(11,13,31,0.6);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    padding: 2px 12px 6px;
+    z-index: 1;
+  }
+  .lightbox-close:focus-visible { outline: 2px solid #6FC6FF; outline-offset: 2px; }
+  .hero-line {
+    font-size: 0.9rem;
+    color: var(--on-navy-soft);
+    opacity: 0.85;
+    max-width: 54ch;
+    margin: 0 auto 14px;
+  }
+  .hero-line .brands { color: var(--on-navy); font-weight: 600; }
+  .hero-strip-wrap {
+    max-width: 620px;
+    margin: 2px auto 16px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    background: #fff;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.16);
+  }
+  .hero-strip {
+    display: block;
+    width: 100%;
+    min-width: 540px;
+    height: auto;
+  }
+  /* On phones, show the whole lineup at once rather than a scroll strip */
+  @media (max-width: 560px) {
+    .hero-strip { min-width: 0; }
+  }
+  .hero-meta {
+    font-size: 0.83rem;
+    color: var(--on-navy-soft);
+    opacity: 0.78;
+    max-width: 50ch;
+    margin: 0 auto 20px;
+    line-height: 1.5;
+  }
+  .hero-meta .ev { display: inline-block; color: #6FC6FF; font-weight: 600; opacity: 1; margin-top: 4px; }
 
   .page {
     max-width: 780px;
@@ -583,13 +706,26 @@
 
 <header class="hero">
   <div class="hero-inner">
-    <span class="eyebrow">Franchise with Sago Loco</span>
-    <h1><span class="hl-yellow">Additional monthly income.</span><br>Starts at <span class="hl-blue">₱280,000</span>.</h1>
-    <p class="hero-sub">It's like buying a car that makes you money.</p>
-    <a class="btn" href="#pricing">Packages and Price &darr;</a>
-    <img class="mascot" src="/assets/franchise-hero-kiosk.jpg" width="380" height="285" alt="Sago Loco kiosk storefront render">
+    <span class="eyebrow">Sago Loco at the AFFI expo</span>
+    <h1>We&rsquo;d like to invite you to visit us.</h1>
+    <img class="hero-poster zoomable" src="/assets/affi-bizfest-2026.jpg" width="860" height="860" role="button" tabindex="0" aria-label="Enlarge the AFFI Franchise Party at BizFest event poster" alt="AFFI Franchise Party @ BizFest poster: September 18 to 20, 2026, Century City Mall, Makati.">
+    <span class="zoom-hint">Tap to enlarge</span>
+    <p class="hero-line">We&rsquo;re exhibiting at the AFFI <strong>&ldquo;Franchise Party @ BizFest,&rdquo;</strong> together with <span class="brands">Siomai House, Tokyo Tempura, Rica&rsquo;s Bacsilog, Healthy Lemon, Captain Calamares, Fari&ntilde;as Ilocos Empanada</span>, and more.</p>
+    <p class="hero-strip-cap">The brands joining us at BizFest</p>
+    <div class="hero-strip-wrap">
+      <img class="hero-strip zoomable" src="/assets/affi-brands-strip.jpg" width="1094" height="160" role="button" tabindex="0" aria-label="Enlarge the participating-brands logo strip" alt="Logos of AFFI Franchise Party @ BizFest brands, including Sago Loco.">
+    </div>
+    <p class="hero-meta">Sago Loco is mentored by Jorge Wieneke, co-founder of the Association of Filipino Franchisers Inc. (AFFI).<br><span class="ev">September 18&ndash;20, 2026 &middot; 5th Floor, Century City Mall, Makati</span></p>
+    <a class="btn" href="#pricing">See the packages &darr;</a>
   </div>
 </header>
+
+<div class="lightbox" id="zoomLightbox" hidden>
+  <button class="lightbox-close" type="button" aria-label="Close enlarged image">&times;</button>
+  <div class="lightbox-stage">
+    <img id="zoomLightboxImg" src="" alt="">
+  </div>
+</div>
 
 <div class="page">
 
@@ -877,6 +1013,45 @@
 
     go(0);
     play();
+  })();
+</script>
+<script>
+  (function () {
+    var lb = document.getElementById('zoomLightbox');
+    var lbImg = document.getElementById('zoomLightboxImg');
+    var closeBtn = lb && lb.querySelector('.lightbox-close');
+    var zoomables = document.querySelectorAll('.zoomable');
+    if (!lb || !lbImg || !zoomables.length) return;
+    var opener = null;
+
+    function open(img) {
+      opener = img;
+      lbImg.src = img.currentSrc || img.src;
+      lbImg.alt = img.alt || '';
+      lb.hidden = false;
+      document.body.style.overflow = 'hidden';
+      closeBtn.focus();
+    }
+    function close() {
+      lb.hidden = true;
+      lbImg.src = '';
+      document.body.style.overflow = '';
+      if (opener) { opener.focus(); opener = null; }
+    }
+
+    for (var i = 0; i < zoomables.length; i++) {
+      (function (img) {
+        img.addEventListener('click', function () { open(img); });
+        img.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') { e.preventDefault(); open(img); }
+        });
+      })(zoomables[i]);
+    }
+    lb.addEventListener('click', close);
+    closeBtn.addEventListener('click', function (e) { e.stopPropagation(); close(); });
+    document.addEventListener('keydown', function (e) {
+      if ((e.key === 'Escape' || e.key === 'Esc') && !lb.hidden) close();
+    });
   })();
 </script>
 
