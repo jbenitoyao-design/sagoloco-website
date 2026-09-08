@@ -762,6 +762,8 @@
         <input class="field-input" type="text" name="location" placeholder="Preferred city / area">
         <textarea class="field-input" name="message" rows="3" placeholder="Anything else we should know?"></textarea>
         <input type="hidden" name="source" value="Sago Loco FAQ Page">
+        <input type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;">
+        <input type="hidden" name="ts" id="faqTs" value="">
         <button type="submit" class="btn">Book My Free Tasting</button>
       </form>
       <iframe name="faqLeadFrame" style="display:none;" title="form submission target"></iframe>
@@ -820,6 +822,8 @@
     var leadFrame = document.querySelector('iframe[name="faqLeadFrame"]');
     var thanks = document.getElementById('faqFormThanks');
     if (inquiryForm && leadFrame && thanks) {
+      /* spam filter: stamp page-load time so the server can reject instant bot POSTs */
+      try { var faqTs = document.getElementById('faqTs'); if (faqTs) faqTs.value = String(Date.now()); } catch (e) {}
       var submitted = false;
       inquiryForm.addEventListener('submit', function () {
         submitted = true;
