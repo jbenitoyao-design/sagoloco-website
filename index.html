@@ -440,12 +440,7 @@
   #homeInquiryForm input:focus,
   #homeInquiryForm textarea:focus { outline: 2px solid var(--blue); outline-offset: 1px; border-color: var(--blue); }
   #homeInquiryForm .btn { font-size: 1rem; }
-
-  .form-thanks { text-align: center; padding: 20px 0; }
-  .form-thanks[hidden] { display: none; }
-  .form-thanks .party { font-size: 2.4rem; }
-  .form-thanks h3 { margin: 10px 0 6px; font-size: 1.35rem; color: var(--navy); }
-  .form-thanks p { color: var(--text-soft); margin: 0 0 18px; }
+  #homeInquiryForm button[disabled] { opacity: 0.75; cursor: default; }
 
   /* ---------- footer ---------- */
   .site-footer {
@@ -692,12 +687,6 @@
           </form>
           <iframe name="homeLeadFrame" style="display:none;" title="form submission target"></iframe>
         </div>
-        <div class="form-thanks" id="homeFormThanks" hidden>
-          <div class="party">&#127881;</div>
-          <h3>Salamat! Message received.</h3>
-          <p>Our franchise team will reach out to you shortly.</p>
-          <button type="button" class="btn btn-blue" id="homeFormReset">Send another inquiry</button>
-        </div>
       </div>
     </div>
   </section>
@@ -770,28 +759,19 @@
     }
   }
 
-  /* ---- inquiry form: native POST into hidden iframe, optimistic thank-you ---- */
+  /* ---- inquiry form: native POST into hidden iframe, then send them to the franchise page ---- */
   var form = document.getElementById('homeInquiryForm');
-  var fields = document.getElementById('homeFormFields');
-  var thanks = document.getElementById('homeFormThanks');
-  var resetBtn = document.getElementById('homeFormReset');
-  if (form && fields && thanks) {
+  if (form) {
     form.addEventListener('submit', function () {
       var name = form.elements['fullName'].value.trim();
       var mobile = form.elements['mobile'].value.trim();
       if (!name || !mobile) return; /* let native required-validation handle it */
+      var btn = form.querySelector('button[type="submit"]');
+      if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
+      /* let the POST reach Google, then redirect to the franchise page */
       setTimeout(function () {
-        fields.hidden = true;
-        thanks.hidden = false;
-        thanks.scrollIntoView({ block: 'center', behavior: reduceMotion ? 'auto' : 'smooth' });
+        window.location.href = '/franchise-packages.html?inquiry=received';
       }, 1200);
-    });
-  }
-  if (resetBtn && form && fields && thanks) {
-    resetBtn.addEventListener('click', function () {
-      form.reset();
-      thanks.hidden = true;
-      fields.hidden = false;
     });
   }
 })();
