@@ -16,7 +16,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg: #F0EEE6;
@@ -189,10 +189,13 @@
     width: 100%;
     max-width: 248px;
     height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
     display: block;
     margin: 16px auto 14px;
     border-radius: 12px;
     border: 1px solid rgba(255,255,255,0.16);
+    background: rgba(255,255,255,0.05);
     box-shadow: 0 10px 26px rgba(0,0,0,0.32);
   }
   @media (max-width: 480px) { .hero-poster { max-width: 200px; } }
@@ -708,7 +711,7 @@
   <div class="hero-inner">
     <span class="eyebrow">Sago Loco at the AFFI expo</span>
     <h1>We&rsquo;d like to invite you to visit us.</h1>
-    <img class="hero-poster zoomable" src="/assets/affi-bizfest-2026.jpg" width="860" height="860" role="button" tabindex="0" aria-label="Enlarge the AFFI Franchise Party at BizFest event poster" alt="AFFI Franchise Party @ BizFest poster: September 18 to 20, 2026, Century City Mall, Makati.">
+    <img class="hero-poster zoomable" src="/assets/affi-bizfest-2026.jpg" data-full="/assets/affi-bizfest-lg.jpg" width="400" height="400" fetchpriority="high" role="button" tabindex="0" aria-label="Enlarge the AFFI Franchise Party at BizFest event poster" alt="AFFI Franchise Party @ BizFest poster: September 18 to 20, 2026, Century City Mall, Makati.">
     <span class="zoom-hint">Tap to enlarge</span>
     <p class="hero-line">We&rsquo;re exhibiting at the AFFI <strong>&ldquo;Franchise Party @ BizFest,&rdquo;</strong> together with <span class="brands">Siomai House, Tokyo Tempura, Rica&rsquo;s Bacsilog, Healthy Lemon, Captain Calamares, Fari&ntilde;as Ilocos Empanada</span>, and more.</p>
     <p class="hero-strip-cap">The brands joining us at BizFest</p>
@@ -768,7 +771,7 @@
         <div class="car-window">
           <div class="car-track">
         <figure class="car-slide" role="group" aria-roledescription="slide" aria-label="1 of 4">
-          <img src="/assets/franchisee-maccoy.jpg?v=4" width="1100" height="521" alt="Maccoy, Sago Loco franchisee in Quezon City">
+          <img src="/assets/franchisee-maccoy.jpg?v=4" width="1100" height="521" loading="lazy" alt="Maccoy, Sago Loco franchisee in Quezon City">
           <figcaption><strong>Maccoy</strong><span>Quezon City</span></figcaption>
         </figure>
         <figure class="car-slide" role="group" aria-roledescription="slide" aria-label="2 of 4">
@@ -1026,7 +1029,7 @@
 
     function open(img) {
       opener = img;
-      lbImg.src = img.currentSrc || img.src;
+      lbImg.src = img.getAttribute('data-full') || img.currentSrc || img.src;
       lbImg.alt = img.alt || '';
       lb.hidden = false;
       document.body.style.overflow = 'hidden';
