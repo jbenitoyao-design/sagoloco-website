@@ -498,6 +498,15 @@
     *, *::before, *::after { animation: none !important; transition: none !important; }
     .reveal { opacity: 1; transform: none; }
   }
+
+  /* ---------- messenger buttons ---------- */
+  .btn-msgr { background: #0084FF; box-shadow: 0 6px 0 0 #0063BF; display: inline-flex; align-items: center; justify-content: center; gap: 10px; text-decoration: none; margin-top: 14px; }
+  .btn-msgr:hover { box-shadow: 0 9px 0 0 #0063BF; }
+  .btn-msgr:active { box-shadow: 0 2px 0 0 #0063BF; }
+  .btn-msgr svg { width: 22px; height: 22px; fill: #fff; flex: none; }
+  .msgr-float { position: fixed; right: 16px; bottom: 16px; z-index: 70; width: 58px; height: 58px; border-radius: 50%; background: #0084FF; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 18px rgba(0,0,0,0.28); text-decoration: none; transition: transform .2s; }
+  .msgr-float:hover { transform: scale(1.08); }
+  .msgr-float svg { width: 30px; height: 30px; fill: #fff; }
 </style>
 </head>
 <body>
@@ -687,6 +696,7 @@
             <input type="hidden" name="ts" id="homeTs" value="">
             <button type="submit" class="btn">Send Inquiry</button>
           </form>
+          <a class="btn btn-msgr" href="https://m.me/sagolocomain" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.36 2 2 6.13 2 11.7c0 2.91 1.19 5.42 3.14 7.16.16.14.26.35.27.57l.05 1.78c.02.57.6.94 1.12.71l1.98-.88c.17-.07.36-.09.53-.04.91.25 1.87.38 2.91.38 5.64 0 10-4.13 10-9.7S17.64 2 12 2zm6 7.46l-2.94 4.66c-.47.74-1.47.92-2.17.4l-2.34-1.75a.6.6 0 0 0-.72 0l-3.16 2.4c-.42.32-.97-.19-.69-.64l2.94-4.66c.47-.74 1.47-.92 2.17-.4l2.34 1.75a.6.6 0 0 0 .72 0l3.16-2.4c.42-.32.97.19.69.64z"/></svg> Chat with us on Messenger</a>
           <iframe name="homeLeadFrame" style="display:none;" title="form submission target"></iframe>
         </div>
       </div>
@@ -707,6 +717,8 @@
   </div>
   <p>&copy; 2026 Sago Loco Pearl Shakes. All rights reserved.</p>
 </footer>
+
+<a class="msgr-float" href="https://m.me/sagolocomain" target="_blank" rel="noopener" aria-label="Chat with Sago Loco on Messenger"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.36 2 2 6.13 2 11.7c0 2.91 1.19 5.42 3.14 7.16.16.14.26.35.27.57l.05 1.78c.02.57.6.94 1.12.71l1.98-.88c.17-.07.36-.09.53-.04.91.25 1.87.38 2.91.38 5.64 0 10-4.13 10-9.7S17.64 2 12 2zm6 7.46l-2.94 4.66c-.47.74-1.47.92-2.17.4l-2.34-1.75a.6.6 0 0 0-.72 0l-3.16 2.4c-.42.32-.97-.19-.69-.64l2.94-4.66c.47-.74 1.47-.92 2.17-.4l2.34 1.75a.6.6 0 0 0 .72 0l3.16-2.4c.42-.32.97.19.69.64z"/></svg></a>
 
 <script>
 (function () {
